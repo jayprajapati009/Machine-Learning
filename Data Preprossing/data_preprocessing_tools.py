@@ -7,7 +7,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 import transformers
 
 # Importing the Data set
@@ -32,15 +32,20 @@ y = dataSet.iloc[:, -1].values
 
 # Taking Care of Missing Data
 
-imputer = SimpleImputer(missing_values=np.nan, strategy='mean')
-imputer.fit(x[:, 1:3])
-x[:, 1:3] = imputer.transform(x[:, 1:3])
+_imputer = SimpleImputer(missing_values=np.nan, strategy='mean')
+_imputer.fit(x[:, 1:3])
+x[:, 1:3] = _imputer.transform(x[:, 1:3])
 
-# Encoding Categorical Data
+# Encoding Categorical Data (Independent Variable)
 
 _ct = ColumnTransformer(
     transformers=[('encoder', OneHotEncoder(), [0])], remainder='passthrough')
 x = np.array(_ct.fit_transform(x))
+
+# Encoding Categorical Data (Dependent Variable)
+
+_le = LabelEncoder()
+y = _le.fit_transform(y)
 
 print(x)
 print(y)
