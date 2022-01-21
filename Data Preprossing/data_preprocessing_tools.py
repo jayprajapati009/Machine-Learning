@@ -1,14 +1,13 @@
 # Data Preprocessing Tools
 
-# Importing Library
-import imp
+# Importing Libraries
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
-import transformers
+from sklearn.model_selection import train_test_split
 
 # Importing the Data set
 
@@ -47,5 +46,12 @@ x = np.array(_ct.fit_transform(x))
 _le = LabelEncoder()
 y = _le.fit_transform(y)
 
-print(x)
-print(y)
+# Splitting the dataset into Training set and Test set
+
+x_train, x_test, y_train, y_test = train_test_split(
+    x, y, test_size=0.2, random_state=1)
+
+print(x_train)
+print(x_test)
+print(y_train)
+print(y_test)
