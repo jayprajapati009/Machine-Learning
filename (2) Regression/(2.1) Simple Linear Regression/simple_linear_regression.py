@@ -25,7 +25,7 @@ _regressor.fit(x_train, y_train)
 # Predicting the Test Set
 y_pred = _regressor.predict(x_test)
 
-# Visualizing the training set results
+""" # Visualizing the training set results
 plt.scatter(x_train, y_train, color = 'red')
 plt.plot(x_train, _regressor.predict(x_train), color='blue')
 plt.title("Salary vs Experience (Training Set)")
@@ -39,4 +39,13 @@ plt.plot(x_test, _regressor.predict(x_test), color='blue')
 plt.title("Salary vs Experience (Test Set)")
 plt.xlabel("Years of Experience")
 plt.ylabel("Salary")
-plt.show()
+plt.show() """
+
+# Predicting salary for custom input of years of experience
+print("Predicting salary for custom input of years of experience = 12 Years")
+print('salary =', float(_regressor.predict([[12]])))
+
+# Getting the equation for the Regression model
+print("Getting the equation for the Linear Regression model")
+print('Salary', '=', _regressor.intercept_, '+',
+      '(', float(_regressor.coef_), '*', 'Years of Experience', ')')
