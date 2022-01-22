@@ -24,7 +24,7 @@ dataSet = pd.read_csv("C:/Users/jaypr/Desktop/VSCodes/Machine Learning/Udemy Cou
 """
 
 dataSet = pd.read_csv(
-    r"C:\Users\jaypr\Desktop\VSCodes\Machine Learning\Udemy Course\Machine-Learning\Data Preprossing\Data.csv")
+    r"C:\Users\jaypr\Desktop\VSCodes\Machine Learning\Udemy Course\Machine-Learning\(1) Data Preprossing\Data.csv")
 
 x = dataSet.iloc[:, :-1].values
 y = dataSet.iloc[:, -1].values
@@ -45,6 +45,9 @@ x = np.array(_ct.fit_transform(x))
 
 _le = LabelEncoder()
 y = _le.fit_transform(y)
+
+print(x)
+print(y)
 
 # Splitting the dataset into Training set and Test set
 
